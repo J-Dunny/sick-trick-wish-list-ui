@@ -5,7 +5,6 @@ class Form extends Component {
     constructor(props){
         super(props)
         this.state = {
-            id: Date.now(),
             stance: '',
             name: '',
             obstacle: '',
@@ -17,27 +16,45 @@ class Form extends Component {
         this.setState({...this.state, [e.target.name]: e.target.value})
     }
 
+    submitNewTrick = e => {
+        e.preventDefault()
+        const newTrick = {
+            id: Date.now(),
+            ...this.state
+        }
+        this.props.addTrick(newTrick)
+        this.clearInputs()
+    }
+
+    clearInputs = () => {
+        this.setState({
+            stance: '',
+            name: '',
+            obstacle: '',
+            tutorial: ''
+        })
+    }
 
     render(){
-        console.log("newtrick",this.state)
+        // console.log("newtrick",this.state)
 
         return(
-            <form onSubmit={(e) => this.props.addTrick(e, this.state)}>
-                <select name="stance" placeholder='Stance' onChange={(e) => this.changeHandler(e)}>
-                    <option value="" defaultValue>Choose Stance</option>
-                    <option value="regular">Regular</option>
-                    <option value="switch">Switch</option>
+            <form onSubmit={(e) => this.submitNewTrick(e)}>
+                <select name="stance" value={this.state.obstacle} onChange={(e) => this.changeHandler(e)}>
+                    <option value='' defaultValue>Choose Stance</option>
+                    <option value='regular'>Regular</option>
+                    <option value={this.state.stance}>Switch</option>
                 </select>
-                <input name="name" placeholder='Name of Trick' onChange={(e) => this.changeHandler(e)}></input>
-                <select name="obstacle" placeholder='Obstacle' onChange={(e) => this.changeHandler(e)}>
-                <option value="" defaultValue>Choose Obstacle</option>
-                    <option value="Flatground">Flatground</option>
-                    <option value="Ledge">Ledge</option>
-                    <option value="Rail">Rail</option>
-                    <option value="Stairs">Stairs</option>
-                    <option value="Pool">Pool</option>
+                <input name="name" placeholder='Name of Trick' value={this.state.name} onChange={(e)  => this.changeHandler(e)}></input>
+                <select name="obstacle" value={this.state.obstacle} onChange={(e) => this.changeHandler(e)}>
+                <option value='' defaultValue>Choose Obstacle</option>
+                    <option value='Flatground'>Flatground</option>
+                    <option value='Ledge'>Ledge</option>
+                    <option value='Rail'>Rail</option>
+                    <option value='Stairs'>Stairs</option>
+                    <option value='Pool'>Pool</option>
                 </select>
-                <input name="tutorial" placeholder='Link to Tutorial' onChange={(e) => this.changeHandler(e)}>
+                <input name="tutorial" placeholder='Link to Tutorial' value={this.state.tutorial} onChange={(e) => this.changeHandler(e)}>
                 </input>
                 <button>Send it!</button>
             </form>

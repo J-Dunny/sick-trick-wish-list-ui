@@ -23,8 +23,8 @@ class App extends Component {
     })
   }
 
-  addTrick = (e, newTrick) => {
-    e.preventDefault()
+  addTrick = (newTrick) => {
+    // e.preventDefault()
     this.setState({tricks: [...this.state.tricks, newTrick]})
   }
 
