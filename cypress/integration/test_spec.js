@@ -28,8 +28,9 @@ describe('Trick List Homepage', () => {
                 .should('have.value', 'Regular')
                 .get('input[name="tutorial"]').type('www.google.com')
                 .should('have.value', 'www.google.com')
-                .get('select[name="obstacle"]')
-                .should('have.value', '')
+                .get('select[name="obstacle"]').select('Ledge')
+                .should('have.value', 'Ledge')
+                .get('button').contains('Send it!')
     })
 
 
@@ -37,11 +38,16 @@ describe('Trick List Homepage', () => {
         cy.visit('http://localhost:3000')
           .get('form')
               .get('input[name="name"]').type('nollie')
-              .get('select[name="stance')
+              .get('select[name="stance').select('Regular')
               
               .get('input[name="tutorial"]').type('www.google.com')
-              .get('select[name="obstacle')
-              
+              .get('select[name="obstacle').select('Ledge')
+              .get('button').contains('Send it!').click()
+
+        .get('div')
+            .contains('nollie')
+        .get('div')
+            .contains('www.google.com')
   })
 
 
