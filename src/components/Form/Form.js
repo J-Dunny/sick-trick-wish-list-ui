@@ -40,10 +40,10 @@ class Form extends Component {
 
         return(
             <form onSubmit={(e) => this.submitNewTrick(e)}>
-                <select name="stance" value={this.state.obstacle} onChange={(e) => this.changeHandler(e)}>
+                <select name="stance" value={this.state.stance} onChange={(e) => this.changeHandler(e)}>
                     <option value='' defaultValue>Choose Stance</option>
-                    <option value='regular'>Regular</option>
-                    <option value={this.state.stance}>Switch</option>
+                    <option value='Regular'>Regular</option>
+                    <option value='Switch'>Switch</option>
                 </select>
                 <input name="name" placeholder='Name of Trick' value={this.state.name} onChange={(e)  => this.changeHandler(e)}></input>
                 <select name="obstacle" value={this.state.obstacle} onChange={(e) => this.changeHandler(e)}>

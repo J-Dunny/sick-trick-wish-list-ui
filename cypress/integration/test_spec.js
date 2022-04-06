@@ -24,8 +24,8 @@ describe('Trick List Homepage', () => {
             .get('form')
                 .get('input[name="name"]').type('nollie')
                 .should('have.value', 'nollie')
-                .get('select[name="stance"]').select('')
-                .should('have.value', '')
+                .get('select[name="stance"]').select('Regular')
+                .should('have.value', 'Regular')
                 .get('input[name="tutorial"]').type('www.google.com')
                 .should('have.value', 'www.google.com')
                 .get('select[name="obstacle"]')
@@ -38,10 +38,10 @@ describe('Trick List Homepage', () => {
           .get('form')
               .get('input[name="name"]').type('nollie')
               .get('select[name="stance')
-              .should('have.value', '')
+              
               .get('input[name="tutorial"]').type('www.google.com')
               .get('select[name="obstacle')
-              .should('have.value', '')
+              
   })
 
 
