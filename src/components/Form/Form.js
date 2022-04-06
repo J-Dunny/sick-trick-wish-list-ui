@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Form.css'
 
 class Form extends Component {
     constructor(props){
@@ -23,11 +24,13 @@ class Form extends Component {
         return(
             <form onSubmit={(e) => this.props.addTrick(e, this.state)}>
                 <select name="stance" placeholder='Stance' onChange={(e) => this.changeHandler(e)}>
+                    <option value="" defaultValue>Choose Stance</option>
                     <option value="regular">Regular</option>
                     <option value="switch">Switch</option>
                 </select>
                 <input name="name" placeholder='Name of Trick' onChange={(e) => this.changeHandler(e)}></input>
                 <select name="obstacle" placeholder='Obstacle' onChange={(e) => this.changeHandler(e)}>
+                <option value="" defaultValue>Choose Obstacle</option>
                     <option value="Flatground">Flatground</option>
                     <option value="Ledge">Ledge</option>
                     <option value="Rail">Rail</option>
