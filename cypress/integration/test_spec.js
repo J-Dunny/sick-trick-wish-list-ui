@@ -37,12 +37,12 @@ describe('Trick List Homepage', () => {
     it('Data values are inputing correctly', () => {
         cy.visit('http://localhost:3000')
           .get('form')
-              .get('input[name="name"]').type('nollie')
-              .get('select[name="stance').select('Regular')
-              
-              .get('input[name="tutorial"]').type('www.google.com')
-              .get('select[name="obstacle').select('Ledge')
-              .get('button').contains('Send it!').click()
+        .get('input[name="name"]').type('nollie')
+        .get('select[name="stance').select('Regular')
+        
+        .get('input[name="tutorial"]').type('www.google.com')
+        .get('select[name="obstacle').select('Ledge')
+        .get('button').contains('Send it!').click()
 
         .get('div')
             .contains('nollie')
