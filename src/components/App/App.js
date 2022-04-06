@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchTricks } from '../../apiCalls';
 import AllTricks from '../AllTricks/AllTricks';
+import Form from '../Form/Form';
 import './App.css';
 
 
@@ -22,6 +23,11 @@ class App extends Component {
     })
   }
 
+  addTrick = (e, newTrick) => {
+    e.preventDefault()
+    this.setState({tricks: [...this.state.tricks, newTrick]})
+  }
+
 
 
 
@@ -29,6 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Sick Trick Wish List</h1>
+        <Form addTrick={this.addTrick}/>
         <AllTricks tricks={this.state.tricks}/>
       </div>
     );

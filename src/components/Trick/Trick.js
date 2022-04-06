@@ -6,10 +6,10 @@ function Trick({trick}){
 
     return (
             <div className="trick-card">
-                <p>{trick.stance}{trick.name}</p>
+                <p>{trick.stance} {trick.name}</p>
                 <p>{trick.obstacle}</p>
                 <p>Link to tutorial:</p>
-                <p>{trick.tutorial}</p>
+                <a href={trick.tutorial}>{trick.tutorial}</a> 
             </div>
     )
 }
